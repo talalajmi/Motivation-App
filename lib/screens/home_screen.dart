@@ -14,9 +14,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-  late Animation<Offset> sidebarAnimation;
-  late Animation<double> fadeAnimation;
-  late AnimationController sidebarAnimationController;
+  Animation<Offset>? sidebarAnimation;
+  Animation<double>? fadeAnimation;
+  AnimationController? sidebarAnimationController;
 
   var sidebarHidden = true;
 
@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       end: const Offset(0, 0),
     ).animate(
       CurvedAnimation(
-        parent: sidebarAnimationController,
+        parent: sidebarAnimationController!,
         curve: Curves.easeInOut,
       ),
     );
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       end: 1.0,
     ).animate(
       CurvedAnimation(
-        parent: sidebarAnimationController,
+        parent: sidebarAnimationController!,
         curve: Curves.easeInOut,
       ),
     );
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   void dispose() {
     super.dispose();
-    sidebarAnimationController.dispose();
+    sidebarAnimationController?.dispose();
   }
 
   @override
@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         setState(() {
                           sidebarHidden = !sidebarHidden;
                         });
-                        sidebarAnimationController.forward();
+                        sidebarAnimationController?.forward();
                       },
                     ),
                     Padding(
@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               child: Stack(
                 children: [
                   FadeTransition(
-                    opacity: fadeAnimation,
+                    opacity: fadeAnimation!,
                     child: GestureDetector(
                       child: Container(
                         color: const Color.fromRGBO(36, 38, 41, 0.4),
@@ -130,12 +130,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         setState(() {
                           sidebarHidden = !sidebarHidden;
                         });
-                        sidebarAnimationController.reverse();
+                        sidebarAnimationController?.reverse();
                       },
                     ),
                   ),
                   SlideTransition(
-                    position: sidebarAnimation,
+                    position: sidebarAnimation!,
                     child: const SafeArea(
                       bottom: false,
                       child: SidebarScreen(),
