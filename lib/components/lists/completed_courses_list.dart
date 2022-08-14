@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:motivation_app/components/cards/completed_courses_card.dart';
 import 'package:motivation_app/components/cards/continue_watching_card.dart';
 import 'package:motivation_app/model/course.dart';
 
-class ContinueWatchingList extends StatefulWidget {
-  const ContinueWatchingList({Key? key}) : super(key: key);
+class CompletedCoursesList extends StatefulWidget {
+  const CompletedCoursesList({Key? key}) : super(key: key);
 
   @override
-  State<ContinueWatchingList> createState() => _ContinueWatchingListState();
+  State<CompletedCoursesList> createState() => _CompletedCoursesListState();
 }
 
-class _ContinueWatchingListState extends State<ContinueWatchingList> {
+class _CompletedCoursesListState extends State<CompletedCoursesList> {
   List<Container> indicators = [];
   int currentPage = 0;
   Widget updateIndicators() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: continueWatchingCourses.map((course) {
-        var index = continueWatchingCourses.indexOf(course);
+      children: completedCourses.map((course) {
+        var index = completedCourses.indexOf(course);
         return Container(
           width: 7.0,
           height: 7.0,
@@ -42,12 +43,12 @@ class _ContinueWatchingListState extends State<ContinueWatchingList> {
             itemBuilder: (context, index) {
               return Opacity(
                 opacity: currentPage == index ? 1 : 0.5,
-                child: ContinueWatchingCard(
-                  course: continueWatchingCourses[index],
+                child: CompletedCoursesCard(
+                  course: completedCourses[index],
                 ),
               );
             },
-            itemCount: continueWatchingCourses.length,
+            itemCount: completedCourses.length,
             onPageChanged: (index) => setState(() {
               currentPage = index;
             }),

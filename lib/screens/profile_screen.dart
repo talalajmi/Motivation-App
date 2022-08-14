@@ -2,7 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:motivation_app/components/cards/completed_courses_card.dart';
+import 'package:motivation_app/components/certificate_viewer.dart';
+import 'package:motivation_app/components/lists/completed_courses_list.dart';
 import 'package:motivation_app/constants.dart';
+import 'package:motivation_app/model/course.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({Key? key}) : super(key: key);
@@ -211,6 +215,80 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 32,
+                left: 20,
+                right: 20,
+                bottom: 12,
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Certificates",
+                        style: kHeadlineLabelStyle,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "See all",
+                            style: kSearchPlaceholderStyle,
+                          ),
+                          Icon(
+                            Platform.isAndroid
+                                ? Icons.chevron_right
+                                : CupertinoIcons.chevron_right,
+                            color: kSecondaryLabelColor,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const CertificateViewer(),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 20,
+                right: 20,
+                bottom: 12,
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Completed Courses",
+                        style: kHeadlineLabelStyle,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "See all",
+                            style: kSearchPlaceholderStyle,
+                          ),
+                          Icon(
+                            Platform.isAndroid
+                                ? Icons.chevron_right
+                                : CupertinoIcons.chevron_right,
+                            color: kSecondaryLabelColor,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const CompletedCoursesList(),
+            const SizedBox(
+              height: 28,
+            )
           ],
         ),
       ),
