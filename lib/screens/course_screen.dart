@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:motivation_app/constants.dart';
 import 'package:motivation_app/model/course.dart';
+import 'package:motivation_app/screens/course_sections_screen.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class CourseScreen extends StatefulWidget {
@@ -62,7 +63,7 @@ class _CourseScreenState extends State<CourseScreen> {
           ],
           minHeight: 0,
           maxHeight: MediaQuery.of(context).size.height * 0.95,
-          panel: Container(),
+          panel: const CourseSectionScreen(),
           body: SingleChildScrollView(
             child: Column(
               children: [

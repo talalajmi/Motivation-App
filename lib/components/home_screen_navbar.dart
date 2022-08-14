@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:motivation_app/components/searchfield_widget.dart';
 import 'package:motivation_app/components/sidebar_button.dart';
 import 'package:motivation_app/constants.dart';
+import 'package:motivation_app/screens/profile_screen.dart';
 
 class HomeScreenNavBar extends StatelessWidget {
   const HomeScreenNavBar({Key? key, required this.triggerAnimation})
@@ -27,9 +28,15 @@ class HomeScreenNavBar extends StatelessWidget {
           const SizedBox(
             width: 16,
           ),
-          const CircleAvatar(
-            radius: 18.0,
-            backgroundImage: AssetImage('asset/images/profile.jpg'),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => ProfileScreen()));
+            },
+            child: const CircleAvatar(
+              radius: 18.0,
+              backgroundImage: AssetImage('asset/images/profile.jpg'),
+            ),
           )
         ],
       ),
